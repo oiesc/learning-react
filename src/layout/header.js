@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import './header.css';
 
 const Header = () => {
     return (
@@ -9,7 +10,7 @@ const Header = () => {
                     <div className="container">
 
                         <Link className="navbar-brand" to="/">
-                            <h1>My first project</h1>
+                            <h1>Learning React</h1>
                         </Link>
 
                         <div className="collapse navbar-collapse" id="navbarCollapse">

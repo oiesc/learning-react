@@ -6,104 +6,11 @@ body {
   color: #2FA5BD !important;
 }
 
-header {
-  width: 100%;
-  display: block;
-  margin-bottom: 50px;
-}
-
-header h1 {
-  margin: 0;
-  display: inline-block;
-  white-space: nowrap;
-}
-
-.main {
-  display: block;
-}
-
-/*Menu */
-
-.fixed-top {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1030;
-}
-
-.navbar {
-  background-color: #212529;
-  position: relative;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  padding: .5rem 1rem;
-  height: 80px;
-  border-radius: 0;
-  box-shadow: 0 .3rem .5rem rgba(0, 0, 0, .5);
-}
-
-.navbar a {
-  text-decoration: none;
-  color: white;
-  transition: .3s;
-}
-
-.navbar-brand {
-  display: inline-block;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
-  margin-right: 1rem;
-  font-size: 1.25rem;
-  line-height: inherit;
-  white-space: nowrap;
-}
-
-.navbar-expand-md .navbar-collapse {
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -ms-flex-preferred-size: auto;
-  flex-basis: auto;
-  flex-grow: 1;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.navbar .container {
-  padding: 0px;
-}
-
-.navbar ul, .navbar ul li {
-  display: inline-block;
-  font-weight: bold;
-  list-style-type: none;
-}
-
-.navbar ul li {
-  margin: 0px 20px;
-  padding: 20px 0px;
-  text-align: center;
-}
-
-.navbar ul li a:hover {
-  color: #A8B5BE;
-}
-
-.navbar ul li:first-child {
-  margin: 0px;
-}
-
 .cards {
   display: grid;
   grid-column-gap: 30px;
   grid-row-gap: 30px;
-  grid-template-columns: repeat(auto-fill, 200px);
+  grid-template-columns: repeat(auto-fill, 300px);
 }
 
 .cards a {

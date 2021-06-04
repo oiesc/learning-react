@@ -1,7 +1,8 @@
 import React from 'react';
 
-export default props => {
+const display = (props) => {
     return (
         <input id="display" type="text" className="form-control result" placeholder={props.result} disabled="disabled" />
     )
 }
+export default display;
