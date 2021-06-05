@@ -5,7 +5,8 @@ const Calc = (props) => {
     return (
         <>
             <div className="row">
-                <button onClick={props.calc('c')} type="button" className="btn btn-dark btn-lg clear font-weight-light">C</button>
+                <button onClick={props.calc('c')} type="button" className="btn btn-dark btn-lg font-weight-light">C</button>
+                <button onClick={props.calc('ce')} type="button" className="btn btn-dark btn-lg font-weight-light">CE</button>
                 <button onClick={props.calc('/')} type="button" className="btn btn-dark btn-lg font-weight-light">/</button>
                 <button onClick={props.calc('*')} type="button" className="btn btn-dark btn-lg font-weight-light">x</button>
             </div>

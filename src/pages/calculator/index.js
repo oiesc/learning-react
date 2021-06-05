@@ -1,8 +1,8 @@
 import './calc.css';
 import React, { useState } from 'react';
 import Header from '../../layout/header.js';
-import Display from './display';
-import Button from './buttons';
+import Display from './Display';
+import Button from './Buttons';
 
 export default function Calculator() {
     // get number/simbols
@@ -10,14 +10,48 @@ export default function Calculator() {
         return 0
     });
 
+    // dot rules
+    const [dot, setDot] = useState(true)
+
     // valid values
     const operations = ['+', '-', '*', '/', '.']
     const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 
     function calc(value) {
-        // clear function
+        // clear
         if (value === 'c') {
-            return () => setData(0)
+            return () => {
+                setDot(true)
+                setData(0)
+            }
+        }
+
+        // cancel entry
+        else if (value === 'ce') {
+            // remove last value from the string
+            const aux = data.toString().substring(0, (data).length - 1);
+
+            // get the last value inserted
+            const aux1 = data.toString().substring((data).length - 1);
+
+            // replace null value with zero
+            if (aux === '')
+                return () => {
+                    setData(0)
+                }
+
+            // if the value is a dot, restore the setDot to true
+            if (aux1 === '.') {
+                return () => {
+                    setDot(true);
+                    setData(aux)
+                }
+            }
+            else {
+                return () => {
+                    setData(aux)
+                }
+            }
         }
 
         // check if the data is a valid value
@@ -27,30 +61,58 @@ export default function Calculator() {
             // check if display value is 0, if true replace with input
             if (data === '0' || data === 0) {
                 if (numbers.indexOf(value) !== -1)
-                    return () => setData(value)
+                    return () => {
+                        // enable dot
+                        setDot(true)
+                        setData(value)
+                    }
+            }
+            // check if input is dot
+            else if ((operations.indexOf(value) !== -1) && value === '.') {
+
+                // if true, put dot on data and set 'dot' to false
+                if (dot === true) {
+                    return () => {
+                        setDot(false)
+                        setData(prevData => prevData + value)
+                    }
+                }
+                else {
+                    return () => data
+                }
+            }
+            else if ((operations.indexOf(value) !== -1) && value !== '.') {
+                return () => {
+                    // dot is enable again
+                    setDot(true)
+                    setData(prevData => prevData + value)
+                }
             }
             return () => setData(prevData => prevData + value)
         }
 
         // result of the operation
         else if (value === '=') {
-            try {
-                const test = (data.toString().substring((data).length - 1))
 
-                // check if the last value is a number or operation
-                // if a number, return this
-                // if a operation, don't return
-                if ((operations.indexOf(test) === -1))
+            const compare = (data.toString().substring((data).length - 1))
 
-                    // the line below disable 'eval' warning
-                    // eslint-disable-next-line
-                    return () => setData(eval(data))
-            }
-            catch (err) {
-                return () => setData("Error")
-            }
+            // check if the last value is a number or operation
+            // if a number, return this
+            // if a operation, don't return
+            if ((operations.indexOf(compare) === -1))
+                return () => {
+                    try {
+                        // the line below disable 'eval' warning
+                        // eslint-disable-next-line
+                        setData(String(eval(data)))
+                    }
+                    catch (err) {
+                        setData("error")
+                    }
+                }
         }
     }
+
     return (
         <>
             <Header />
@@ -61,6 +123,7 @@ export default function Calculator() {
                             <div className="calculator">
                                 <Display result={data} />
                                 <Button calc={calc} data={data} setData={setData} />
+
                             </div>
                         </div>
                     </div>
