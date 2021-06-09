@@ -19,7 +19,7 @@ const ApiList = () => {
     return (
         <>
             <div className="container">
-                <h3>API List</h3>
+                <h3>Simple API List</h3>
 
                 {apilist ?
                     // if API are ok, return this

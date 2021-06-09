@@ -15,7 +15,7 @@ function Main() {
                 <div className="card-img">
                   <img src={ApiList} alt="ApiList" />
                 </div>
-                <div className="description">API List</div>
+                <div className="description">Simple API List</div>
               </div>
             </Link>
 

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { NavLink as Link } from 'react-router-dom'
 
+// style for nav menu
 export const Nav = styled.nav`
     background: #212529;
     height: 100px;
@@ -11,6 +12,7 @@ export const Nav = styled.nav`
     font-weight: bold;
 `;
 
+// style for nav link
 export const NavLink = styled(Link)`
     color: #fff;
     display: flex;
@@ -24,6 +26,7 @@ export const NavLink = styled(Link)`
     }
 `;
 
+// style for the open/close menu button
 export const StyledBurger = styled.div`
     cursor: pointer;
     width: 3rem;
@@ -58,11 +61,11 @@ export const StyledBurger = styled.div`
     }
 `;
 
+// style for menu change
 export const Ul = styled.ul`
     list-style: none;
     display: flex;
     flex-flow: row nowrap;
-    -webkit-backface-visibility: hidden;
     z-index: 2;
     li {
         margin-top: 10px;

@@ -19,12 +19,14 @@ const Header = () => {
                         <NavLink exact to="/">
                             <h1>Learning React</h1>
                         </NavLink>
+                        {/*if click, show/close menu bar*/}
                         <StyledBurger open={open} onClick={() => setOpen(!open)}>
                             <div />
                             <div />
                             <div />
                         </StyledBurger>
                         <Ul open={open}>
+                            {/* menu links*/}
                             <li onClick={() => setOpen(!open)}><NavLink exact to="/">Home</NavLink></li>
                             <li onClick={() => setOpen(!open)}><NavLink to="/about">About</NavLink></li>
                         </Ul>
