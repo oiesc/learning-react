@@ -1,16 +1,18 @@
 body {
-  background-color: #F9FAFF;
+  background-color: #c7c7c7;
+  padding-top: 150px;
 }
 
-.is-active {
-  color: #2FA5BD !important;
+.container {
+  margin-bottom: 40px;
 }
 
 .cards {
   display: grid;
-  grid-column-gap: 30px;
-  grid-row-gap: 30px;
-  grid-template-columns: repeat(auto-fill, 300px);
+  grid-column-gap: 45px;
+  grid-row-gap: 45px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+  justify-content: center;
 }
 
 .cards a {
@@ -28,9 +30,10 @@ body {
   border: 1px solid rgba(0, 0, 0, .125);
   border-radius: 5px;
   background-color: #fff;
-  cursor: pointer;
-  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
-  transition: 0.5s;
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+  max-width: 300px;
+  -webkit-backface-visibility: hidden;
+  transition: .5s;
 }
 
 .cards .card:hover {
@@ -42,18 +45,17 @@ body {
   transition: 0.2s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-}
-
-.container .card .card-img:hover {
-  transform: scale(1.01);
-  transition: 0.5s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 5px 10px rgb(0 0 0 / 50%);
+  -webkit-backface-visibility: hidden;
+  transition: transform .5s;
+  overflow: hidden;
 }
 
 .container .card .card-img img {
   max-width: 100%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  -webkit-backface-visibility: hidden;
+  transition: transform .5s;
 }
 
 .container .card .description {
@@ -65,7 +67,11 @@ body {
   transition: .5s;
 }
 
-.container .card .description:hover {
-  background-color: #0076A4 !important;
+.container .card:hover .description {
+  background-color: #212529 !important;
   color: white;
+}
+
+.container .card:hover .card-img img {
+  transform: scale(1.1);
 }

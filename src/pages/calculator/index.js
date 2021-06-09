@@ -1,6 +1,5 @@
-import './calc.css';
+import './Calc.css';
 import React, { useState } from 'react';
-import Header from '../../layout/header.js';
 import Display from './Display';
 import Button from './Buttons';
 
@@ -19,7 +18,7 @@ export default function Calculator() {
 
     function calc(value) {
         // clear
-        if (value === 'c') {
+        if (value === 'C') {
             return () => {
                 setDot(true)
                 setData(0)
@@ -27,7 +26,7 @@ export default function Calculator() {
         }
 
         // cancel entry
-        else if (value === 'ce') {
+        else if (value === 'CE') {
             // remove last value from the string
             const aux = data.toString().substring(0, (data).length - 1);
 
@@ -43,7 +42,7 @@ export default function Calculator() {
             // if the value is a dot, restore the setDot to true
             if (aux1 === '.') {
                 return () => {
-                    setDot(true);
+                    setDot(true)
                     setData(aux)
                 }
             }
@@ -115,14 +114,13 @@ export default function Calculator() {
 
     return (
         <>
-            <Header />
-            <div className="main">
-                <div className="container">
+            <div className="container">
+                <div className="main">
                     <div className="row">
                         <div className="col d-flex justify-content-center">
                             <div className="calculator">
                                 <Display result={data} />
-                                <Button calc={calc} data={data} setData={setData} />
+                                <Button calc={calc} />
 
                             </div>
                         </div>
@@ -131,5 +129,4 @@ export default function Calculator() {
             </div>
         </>
     )
-
 }

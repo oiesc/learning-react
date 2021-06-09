@@ -1,40 +1,72 @@
 import React from 'react';
 
 const Calc = (props) => {
+    const { calc } = props
 
+    // mapping separate rows, just for practice
+    const row1 = [
+        { id: '1', value: 'C', className: 'btn btn-dark btn-lg font-weight-light' },
+        { id: '2', value: 'CE', className: 'btn btn-dark btn-lg font-weight-light' },
+        { id: '3', value: '/', className: 'btn btn-dark btn-lg font-weight-light' },
+        { id: '4', value: '*', className: 'btn btn-dark btn-lg font-weight-light' }
+    ]
+    const row2 = [
+        { id: '1', value: '7', className: 'btn btn-dark btn-lg font-weight-light' },
+        { id: '2', value: '8', className: 'btn btn-dark btn-lg font-weight-light' },
+        { id: '3', value: '9', className: 'btn btn-dark btn-lg font-weight-light' },
+        { id: '4', value: '-', className: 'btn btn-dark btn-lg font-weight-light' }
+    ]
+    const row3 = [
+        { id: '1', value: '4', className: 'btn btn-dark btn-lg font-weight-light' },
+        { id: '2', value: '5', className: 'btn btn-dark btn-lg font-weight-light' },
+        { id: '3', value: '6', className: 'btn btn-dark btn-lg font-weight-light' },
+        { id: '4', value: '+', className: 'btn btn-dark btn-lg font-weight-light' }
+    ]
+    const row4 = [
+        { id: '1', value: '1', className: 'btn btn-dark btn-lg font-weight-light' },
+        { id: '2', value: '2', className: 'btn btn-dark btn-lg font-weight-light' },
+        { id: '3', value: '3', className: 'btn btn-dark btn-lg font-weight-light' },
+        { id: '4', value: '=', className: 'btn btn-dark btn-lg font-weight-light enter' }
+    ]
+    const row5 = [
+        { id: '1', value: '0', className: 'btn btn-dark btn-lg font-weight-light zero' },
+        { id: '2', value: '.', className: 'btn btn-dark btn-lg font-weight-light' }
+    ]
     return (
         <>
             <div className="row">
-                <button onClick={props.calc('c')} type="button" className="btn btn-dark btn-lg font-weight-light">C</button>
-                <button onClick={props.calc('ce')} type="button" className="btn btn-dark btn-lg font-weight-light">CE</button>
-                <button onClick={props.calc('/')} type="button" className="btn btn-dark btn-lg font-weight-light">/</button>
-                <button onClick={props.calc('*')} type="button" className="btn btn-dark btn-lg font-weight-light">x</button>
+                {row1.map((rowone) => {
+                    const { value, className } = rowone
+                    return <button key={rowone.id} onClick={calc(value)} type="button" className={className}>{value}</button>
+                })}
             </div>
 
             <div className="row">
-                <button onClick={props.calc('7')} type="button" className="btn btn-dark btn-lg font-weight-light">7</button>
-                <button onClick={props.calc('8')} type="button" className="btn btn-dark btn-lg font-weight-light">8</button>
-                <button onClick={props.calc('9')} type="button" className="btn btn-dark btn-lg font-weight-light">9</button>
-                <button onClick={props.calc('-')} type="button" className="btn btn-dark btn-lg font-weight-light">-</button>
+                {row2.map((rowtwo) => {
+                    const { value, className } = rowtwo
+                    return <button key={rowtwo.id} onClick={calc(value)} type="button" className={className}>{value}</button>
+                })}
             </div>
 
             <div className="row">
-                <button onClick={props.calc('4')} type="button" className="btn btn-dark btn-lg font-weight-light">4</button>
-                <button onClick={props.calc('5')} type="button" className="btn btn-dark btn-lg font-weight-light">5</button>
-                <button onClick={props.calc('6')} type="button" className="btn btn-dark btn-lg font-weight-light">6</button>
-                <button onClick={props.calc('+')} type="button" className="btn btn-dark btn-lg font-weight-light">+</button>
+                {row3.map((rowthree) => {
+                    const { value, className } = rowthree
+                    return <button key={rowthree.id} onClick={calc(value)} type="button" className={className}>{value}</button>
+                })}
             </div>
 
             <div className="row">
-                <button onClick={props.calc('1')} type="button" className="btn btn-dark btn-lg font-weight-light">1</button>
-                <button onClick={props.calc('2')} type="button" className="btn btn-dark btn-lg font-weight-light">2</button>
-                <button onClick={props.calc('3')} type="button" className="btn btn-dark btn-lg font-weight-light">3</button>
-                <button onClick={props.calc('=')} type="button" className="btn btn-dark btn-lg enter">=</button>
+                {row4.map((rowfour) => {
+                    const { value, className } = rowfour
+                    return <button key={rowfour.id} onClick={calc(value)} type="button" className={className}>{value}</button>
+                })}
             </div>
 
             <div className="row" style={{ marginTop: -60 }}>
-                <button onClick={props.calc('0')} type="button" className="btn btn-dark zero btn-lg font-weight-light">0</button>
-                <button onClick={props.calc('.')} type="button" className="btn btn-dark btn-lg font-weight-light">.</button>
+                {row5.map((rowfive) => {
+                    const { value, className } = rowfive
+                    return <button key={rowfive.id} onClick={calc(value)} type="button" className={className}>{value}</button>
+                })}
             </div>
         </>
     );

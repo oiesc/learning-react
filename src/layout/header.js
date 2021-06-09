@@ -1,28 +1,35 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
 import './header.css';
+import {
+    Nav,
+    NavLink,
+    StyledBurger,
+    Ul
+} from './NavbarElements'
 
 const Header = () => {
+
+    const [open, setOpen] = useState(false)
+
     return (
         <>
             <header>
-                <nav className="navbar navbar-expand-md navbar-light fixed-top">
-                    <div className="container">
-
-                        <Link className="navbar-brand" to="/">
+                <div className="container">
+                    <Nav>
+                        <NavLink exact to="/">
                             <h1>Learning React</h1>
-                        </Link>
-
-                        <div className="collapse navbar-collapse" id="navbarCollapse">
-                            <ul className="navbar-nav ml-auto">
-
-                                <li className="nav-item menu"><NavLink exact={true} activeClassName='is-active' to="/">Home</NavLink></li>
-                                <li className="nav-item menu"><NavLink activeClassName='is-active' to="/about">About</NavLink></li>
-
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+                        </NavLink>
+                        <StyledBurger open={open} onClick={() => setOpen(!open)}>
+                            <div />
+                            <div />
+                            <div />
+                        </StyledBurger>
+                        <Ul open={open}>
+                            <li onClick={() => setOpen(!open)}><NavLink exact to="/">Home</NavLink></li>
+                            <li onClick={() => setOpen(!open)}><NavLink to="/about">About</NavLink></li>
+                        </Ul>
+                    </Nav>
+                </div>
             </header>
         </>
     );
