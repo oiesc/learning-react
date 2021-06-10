@@ -1,0 +1,20 @@
+.container .main[data-v-0004] {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+}
+
+.main[data-v-0004] h4 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(100, 100, 100);
+    display: flex;
+}
+
+.break {
+    flex-basis: 100%;
+}
+
+.voters button {
+    margin: 0 10px;
+}
