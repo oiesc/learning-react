@@ -26,7 +26,7 @@ const ApiList = () => {
                     (
                         <div className="cards">
                             {
-                                // slice -> limitar dados que serao exibidos
+                                // slice -> data limit
                                 apilist.slice(0, 50).map(list => (
                                     <ListCard key={list.id} list={list} />
                                 ))

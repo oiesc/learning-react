@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 //imagens
 import CardCalc from '../../cards/calc.jpg';
 import ApiList from '../../cards/apilist.jpg';
-import NoName from '../../cards/noname.jpg'
+import Redux from '../../cards/noname.jpg'
 
 function Main() {
   return (
@@ -12,12 +12,12 @@ function Main() {
         <div className="main">
           <div className="cards">
 
-            <Link to="/noname">
+            <Link to="/redux">
               <div className="card">
                 <div className="card-img">
-                  <img src={NoName} alt="NoName" />
+                  <img src={Redux} alt="Redux" />
                 </div>
-                <div className="description">No Name</div>
+                <div className="description"><p>Increment/decrement with redux</p></div>
               </div>
             </Link>
 
@@ -26,7 +26,7 @@ function Main() {
                 <div className="card-img">
                   <img src={ApiList} alt="ApiList" />
                 </div>
-                <div className="description">Simple API List</div>
+                <div className="description"><p>Simple API List</p></div>
               </div>
             </Link>
 
@@ -35,7 +35,7 @@ function Main() {
                 <div className="card-img">
                   <img src={CardCalc} alt="Calculator" />
                 </div>
-                <div className="description">Calculator</div>
+                <div className="description"><p>Calculator</p></div>
               </div>
             </Link>
           </div>

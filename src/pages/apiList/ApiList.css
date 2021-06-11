@@ -7,16 +7,25 @@
 .card[data-v-0001] {
     cursor: pointer;
     transition: .5s;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card[data-v-0001]:hover {
+    background-color: rgba(255,255,255,0.8) !important;
+    color: black;
 }
 
 .card[data-v-0001] .title {
     font-weight: bold;
     margin-top: 20px;
     padding: 0 10px;
+    width: 100%;
 }
 
 .card[data-v-0001] .item {
     margin: 20px 0;
+    width: 100%;
 }
 
 .container .main[data-v-0002] {
@@ -37,6 +46,7 @@
     background-color: #212529;
     color: white;
 }
+
 .container[data-v-0003] Button:hover {
     background-color: #383d42;
 }

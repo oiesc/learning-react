@@ -19,8 +19,18 @@
     color: white;
 }
 
+.card:hover button {
+    background-color: #c7c7c7 !important;
+    color: #000;
+}
+
+.card:hover .score {
+    background-color: #c7c7c7 !important;
+    color: #000 !important;
+}
+
 .voters Button:hover {
-    background-color: #383d42 !important;
+    background-color: #636363 !important;
 }
 
 .cardsAvengers {

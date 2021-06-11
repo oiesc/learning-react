@@ -32,8 +32,11 @@ body {
   background-color: #fff;
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
   max-width: 300px;
-  -webkit-backface-visibility: hidden;
+  height: 100%;
   transition: .5s;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .cards .card:hover {
@@ -45,31 +48,35 @@ body {
   transition: 0.2s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  -webkit-backface-visibility: hidden;
   transition: transform .5s;
   overflow: hidden;
 }
 
 .container .card .card-img img {
-  max-width: 100%;
+  width: 100%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  -webkit-backface-visibility: hidden;
   transition: transform .5s;
 }
 
-.container .card .description {
-  padding: 15px 0;
+.container .description {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   font-weight: bold;
   font-size: 1.5rem;
-  transition: .5s;
+  padding: 15px 0;
+  width: 100%;
 }
 
-.container .card:hover .description {
+.container .card:hover {
+  border: 1px solid #fff;
   background-color: #212529 !important;
   color: white;
+}
+
+.description p {
+  margin: 0;
+  bottom: 0;
 }
 
 .container .card:hover .card-img img {

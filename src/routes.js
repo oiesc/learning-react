@@ -6,7 +6,7 @@ import About from './pages/about';
 import Header from './layout/Header'
 import ApiList from './pages/apiList'
 import Item from './pages/apiList/Item'
-import NoName from './pages/noname'
+import Redux from './pages/redux'
 
 function Routes() {
     return (
@@ -18,7 +18,7 @@ function Routes() {
                 <Route path="/about" component={About} />
                 <Route exact path="/apiList" component={ApiList} />
                 <Route path="/apiList/item/:id" component={Item} />
-                <Route path="/noname" component={NoName} />
+                <Route path="/redux" component={Redux} />
             </Switch>
         </BrowserRouter>
     );
