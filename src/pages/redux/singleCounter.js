@@ -40,7 +40,7 @@ const Counter = (props) => {
             <div className="card">
                 <div style={{ margin: "10px 0px" }}>
                     <h4 style={{ display: "inline-block", padding: "10px", margin: "0" }}>{firstName} {lastName}: </h4>
-                    <h4 class="score" style={{ display: "inline-block", padding: "10px", margin: "0", backgroundColor: "#212529", color: "white", borderRadius: "5px" }}>{votes}</h4>
+                    <h4 className="score" style={{ display: "inline-block", padding: "10px", margin: "0", backgroundColor: "#212529", color: "white", borderRadius: "5px" }}>{votes}</h4>
                     <div className="avatar">
                         <div className="card-img">
                             {avatar && avatar.map(ico => {
