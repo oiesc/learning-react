@@ -1,18 +1,26 @@
 const INCREMENT = 'increment';
 const DECREMENT = 'decrement';
 
+// export function to use in dispatch
 export const increment = () => ({
     type: INCREMENT
 });
 
+// export function to use in dispatch
 export const decrement = () => ({
     type: DECREMENT
 });
 
+// initial state for count variable
 const initialState = {
     count: 0
 };
 
+// reduce function to make State changes
+// side effects, only as applicable
+
+// export default function reduceCounter(state = initialState, action)
+// disable the warning about default export, or change to the sintax above
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initialState, action) => {
     switch (action.type) {

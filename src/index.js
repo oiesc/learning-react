@@ -8,6 +8,8 @@ import store from './redux/configureStore'
 
 ReactDOM.render(
   <React.StrictMode>
+
+    {/* Provider - integrate react with redux */}
     <Provider store={store}>
       <App />
     </Provider>

@@ -1,16 +1,27 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { decrement, increment } from '../../redux/ducks/counter'
 import './NoName.css';
+import { getAvatar } from "../../redux/ducks/avatar"
+import Button from '@material-ui/core/Button'
 
 const Counter = (props) => {
 
-    const { firstName, lastName } = (props)
+    // return the new state
+    const avatar = useSelector(state => state.avatar.avatar);
 
-    const [votes, setVotes] = useState(0)
+    const { id, firstName, lastName } = (props);
+
+    const [votes, setVotes] = useState(0);
 
     // trigger action
     const dispatch = useDispatch();
+
+    // trigger getAvatar from jsondb
+    useEffect(() => {
+        dispatch(getAvatar())
+    }, [dispatch])
+
 
     const handleIncrement = () => {
         dispatch(increment())
@@ -24,20 +35,36 @@ const Counter = (props) => {
     };
 
     return (
-        <div className="container" data-v-0004>
-            <div className="main" data-v-0004>
-                <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
-                    <div style={{ marginBottom: "5px" }}>
-                        <h5>{firstName} {lastName}: {votes}</h5>
-                    </div>
-                    <div className="break"></div>
-                    <div className="voters">
-                        <button onClick={handleDecrement}>Decrement</button>
-                        <button onClick={handleIncrement}>Increment</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <>
+
+            {avatar && avatar.map(ico => {
+                const { id: idAvatar, userid, src } = ico
+
+                if (id === userid) {
+                    return (
+                        <div className="card" key={idAvatar}>
+                            <div style={{ margin: "10px 0px" }}>
+                                <h4 style={{ display: "inline-block", padding: "10px", margin: "0" }}>{firstName} {lastName}: </h4>
+                                <h4 style={{ display: "inline-block", padding: "10px", margin: "0", backgroundColor: "#212529", color: "white", borderRadius: "5px" }}>{votes}</h4>
+                                <div className="avatar">
+                                    <div className="card-img">
+                                        <img src={src} alt="thumb" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="voters">
+                                <Button variant="contained" onClick={handleDecrement}>-1</Button>
+                                <Button variant="contained" onClick={handleIncrement}>+1</Button>
+                            </div>
+                        </div>
+                    )
+                }
+                else
+                    // return null case don't have user
+                    return null
+            })
+            }
+        </>
     )
 }
 
