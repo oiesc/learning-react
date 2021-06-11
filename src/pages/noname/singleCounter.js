@@ -35,35 +35,32 @@ const Counter = (props) => {
     };
 
     return (
+
         <>
-
-            {avatar && avatar.map(ico => {
-                const { id: idAvatar, userid, src } = ico
-
-                if (id === userid) {
-                    return (
-                        <div className="card" key={idAvatar}>
-                            <div style={{ margin: "10px 0px" }}>
-                                <h4 style={{ display: "inline-block", padding: "10px", margin: "0" }}>{firstName} {lastName}: </h4>
-                                <h4 style={{ display: "inline-block", padding: "10px", margin: "0", backgroundColor: "#212529", color: "white", borderRadius: "5px" }}>{votes}</h4>
-                                <div className="avatar">
-                                    <div className="card-img">
-                                        <img src={src} alt="thumb" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="voters">
-                                <Button variant="contained" onClick={handleDecrement}>-1</Button>
-                                <Button variant="contained" onClick={handleIncrement}>+1</Button>
-                            </div>
+            <div className="card">
+                <div style={{ margin: "10px 0px" }}>
+                    <h4 style={{ display: "inline-block", padding: "10px", margin: "0" }}>{firstName} {lastName}: </h4>
+                    <h4 style={{ display: "inline-block", padding: "10px", margin: "0", backgroundColor: "#212529", color: "white", borderRadius: "5px" }}>{votes}</h4>
+                    <div className="avatar">
+                        <div className="card-img">
+                            {avatar && avatar.map(ico => {
+                                const { id: idAvatar, userid, src } = ico
+                                if (id === userid) {
+                                    return (
+                                        <img key={idAvatar} src={src} alt={firstName + ' ' + lastName} />
+                                    )
+                                }
+                                else
+                                    return null
+                            })}
                         </div>
-                    )
-                }
-                else
-                    // return null case don't have user
-                    return null
-            })
-            }
+                    </div>
+                </div>
+                <div className="voters">
+                    <Button variant="contained" onClick={handleDecrement}>-1</Button>
+                    <Button variant="contained" onClick={handleIncrement}>+1</Button>
+                </div>
+            </div>
         </>
     )
 }
