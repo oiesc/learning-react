@@ -1,26 +1,26 @@
-import { combineReducers, createStore, applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga'
-import counterReducer from './ducks/counter'
-import userReducer from './ducks/user'
-import avatarReducer from './ducks/avatar'
+// reduce toolkit
+import { configureStore, combineReducers, getDefaultMiddleware } from '@reduxjs/toolkit';
+// when use api request
+import createSagaMiddleware from 'redux-saga';
 import { watcherSaga } from './sagas/rootSaga';
+import user from './ducks/userSlice';
+import counterReducer from './ducks/counter';
+import avatar from './ducks/avatar'
 
-// items ready to use
+const sagaMiddleware = createSagaMiddleware()
+
+// aways use combineReducers
 const reducer = combineReducers({
     counter: counterReducer,
-    user: userReducer,
-    avatar: avatarReducer
-})
+    user: user,
+    avatar: avatar,
+});
 
-const SagaMiddleware = createSagaMiddleware();
-
-const middleware = [SagaMiddleware];
-
-const store = createStore(
+const store = configureStore({
     reducer,
-    {}, applyMiddleware(...middleware)
-);
+    middleware: [...getDefaultMiddleware({ thunk: false }), sagaMiddleware]
+});
 
-SagaMiddleware.run(watcherSaga)
+sagaMiddleware.run(watcherSaga)
 
-export default store;
+export default store

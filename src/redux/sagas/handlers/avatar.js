@@ -6,7 +6,7 @@ export function* handleGetAvatar(action) {
     try {
         const response = yield call(requestGetAvatar);
         const { data } = response;
-        yield put(setAvatar(data))
+        yield put(setAvatar({ ...data }))
     }
     catch (error) {
         console.log(error);

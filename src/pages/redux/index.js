@@ -1,22 +1,28 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import SingleCounter from './singleCounter'
-import { getUser } from '../../redux/ducks/user'
+import { reset } from '../../redux/ducks/counter'
+import { getUser } from '../../redux/ducks/userSlice'
 
 const Counters = () => {
 
-    const dispatch = useDispatch()
+    const user = useSelector((state) => state.user)
 
-    // trigger getUser from jsondb
+    const count = useSelector((state) => state.counter.value)
+
+    // get user data
+    // trigger action
+    const dispatch = useDispatch();
+
+    // get user
     useEffect(() => {
         dispatch(getUser())
     }, [dispatch])
 
-    // return the new state
-    const user = useSelector(state => state.user.user);
-
-    // return the new state
-    const count = useSelector(state => state.counter.count);
+    // reset counter value when refresh page
+    useEffect(() => {
+        dispatch(reset())
+    }, [dispatch])
 
     return (
         <>
@@ -43,11 +49,12 @@ const Counters = () => {
                     </div>
 
                     <div className="cardsAvengers">
-                        {user && user.map(usr => {
-                            const { id, firstName, lastName } = usr
-                            return <SingleCounter key={id} id={id} count={count} firstName={firstName} lastName={lastName} />
-                        })
-                        }
+                        {Object.keys(user).map(function (key) {
+                            const { id, firstName, lastName } = user[key]
+                            return (
+                                <SingleCounter key={id} count={count} id={id} firstName={firstName} lastName={lastName} />
+                            )
+                        })}
                     </div>
                 </div>
             </div>
