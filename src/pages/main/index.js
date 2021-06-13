@@ -17,7 +17,7 @@ function Main() {
                 <div className="card-img">
                   <img src={Redux} alt="Redux" />
                 </div>
-                <div className="description"><p>Increment/decrement with redux</p></div>
+                <div className="description"><p>Redux Saga</p></div>
               </div>
             </Link>
 
