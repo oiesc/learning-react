@@ -49,13 +49,12 @@ const Counter = (props) => {
                         <div className="card-img">
                             {Object.keys(avatar).map(function (key) {
                                 const { id: avatarId, userid, src } = avatar[key]
-                                if (id === userid) {
-                                    return (
-                                        <img key={avatarId} src={src} alt={firstName + ' ' + lastName} />
-                                    )
-                                }
-                                else
+                                if (id !== userid) {
                                     return null
+                                }
+                                return (
+                                    <img key={avatarId} src={src} alt={firstName + ' ' + lastName} />
+                                )
                             })}
                         </div>
                     </div>
