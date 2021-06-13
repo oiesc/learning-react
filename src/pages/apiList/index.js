@@ -24,10 +24,10 @@ const ApiList = () => {
                 {apilist ?
                     // if API are ok, return this
                     (
-                        <div className="cards">
+                        <div className="cards" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(250px, auto))", placeItems: "normal" }}>
                             {
                                 // slice -> data limit
-                                apilist.slice(0, 50).map(list => (
+                                apilist.slice(0, 98).map(list => (
                                     <ListCard key={list.id} list={list} />
                                 ))
                             }
