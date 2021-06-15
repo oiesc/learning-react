@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import './NoName.css';
 import Button from '@material-ui/core/Button'
@@ -7,11 +7,14 @@ import { getAvatar } from '../../redux/ducks/avatar'
 
 const Counter = (props) => {
 
-    const avatar = useSelector((state) => state.avatar)
-
+    // destructured props
     const { id, firstName, lastName } = props;
 
-    const [votes, setVotes] = useState(0);
+    // import pictures
+    const avatar = useSelector((state) => state.avatar)
+
+    // import individual counters
+    const count = useSelector((state) => state.counter)
 
     // trigger action
     const dispatch = useDispatch();
@@ -22,29 +25,30 @@ const Counter = (props) => {
     }, [dispatch])
 
     // handles
-    function handleIncrement() {
+    function handleIncrement(id) {
         return () => {
-            setVotes(votes + 1)
-            dispatch(increment())
+            dispatch(increment({ id }))
         }
     }
-
-    function handleDecrement() {
+    function handleDecrement(id) {
         return () => {
-            if (votes > 0) {
-                setVotes(votes - 1)
-                dispatch(decrement())
-            }
+            dispatch(decrement({ id }))
         }
     }
-
     return (
 
         <>
             <div className="card">
                 <div style={{ margin: "10px 0px" }}>
                     <h4 style={{ width: "100%", display: "inline-block", padding: "10px 0", margin: "0" }}> {firstName} {lastName}</h4>
-                    <h4 className="score" style={{ margin: "-40px 10px 0 0", float: "right", display: "inline-block", padding: "10px", backgroundColor: "#212529", color: "white", borderRadius: "5px" }}>{votes}</h4>
+                    <h4 className="score" style={{ margin: "-40px 10px 0 0", float: "right", display: "inline-block", padding: "10px", backgroundColor: "#212529", color: "white", borderRadius: "5px" }}>{
+                        // show individual counters
+                        count && count.map(userCount => {
+                            if (id !== userCount.id)
+                                return null
+                            return userCount.value
+                        })
+                    }</h4>
                     <div className="avatar">
                         <div className="card-img">
                             {Object.keys(avatar).map(function (key) {
@@ -60,8 +64,8 @@ const Counter = (props) => {
                     </div>
                 </div>
                 <div className="voters">
-                    <Button variant="contained" onClick={handleDecrement()}>-1</Button>
-                    <Button variant="contained" onClick={handleIncrement()}>+1</Button>
+                    <Button variant="contained" onClick={handleDecrement(id)}>-1</Button>
+                    <Button variant="contained" onClick={handleIncrement(id)}>+1</Button>
                 </div>
             </div>
         </>
