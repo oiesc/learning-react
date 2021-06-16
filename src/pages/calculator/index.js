@@ -1,7 +1,7 @@
 import './Calc.css';
 import React, { useState } from 'react';
-import Display from './Display';
-import Button from './Buttons';
+import Display from './display'
+import Button from './buttons'
 
 export default function Calculator() {
     // get number/simbols
